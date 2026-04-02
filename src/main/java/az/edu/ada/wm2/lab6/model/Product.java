@@ -58,4 +58,33 @@ public class Product {
     public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
+
+    public static ProductBuilder builder() {
+        return new ProductBuilder();
+    }
+
+    public static class ProductBuilder {
+        private String productName;
+        private BigDecimal price;
+        private LocalDate expirationDate;
+
+        public ProductBuilder productName(String productName) {
+            this.productName = productName;
+            return this;
+        }
+
+        public ProductBuilder price(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
+
+        public ProductBuilder expirationDate(LocalDate expirationDate) {
+            this.expirationDate = expirationDate;
+            return this;
+        }
+
+        public Product build() {
+            return new Product(productName, price, expirationDate);
+        }
+    }
 }
